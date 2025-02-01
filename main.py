@@ -9,6 +9,9 @@ from langchain_experimental.agents import create_csv_agent
 from langchain.prompts import PromptTemplate
 from langchain_openai import ChatOpenAI, OpenAI
 
+from langchain_community.llms import LlamaCpp
+
+
 
 def main():
     load_dotenv()
@@ -78,10 +81,19 @@ def main():
                 """
         )
 
-        # Initialize OpenAI LLM
+        # Initialize OpenAI LLM (not free)
         llm = ChatOpenAI(
             model_name="gpt-4-turbo",
             temperature=0
+        )
+        
+        # Load a local model (Example: Mistral 7B)
+        #llm = LlamaCpp(model_path="./models/mistral-7b.Q4_K_M.gguf", n_ctx=2048)
+        # Load the GGUF model
+        llm = LlamaCpp(
+            model_path="./models/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
+            n_ctx=2048,  # Set the context window size
+            temperature=0.2  # Adjust as needed for creativity
         )
 
         # Create the CSV Agent
