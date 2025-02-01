@@ -1,131 +1,96 @@
 📊 FinnAI - P&L Analysis Chatbot
-A Streamlit-based chatbot that analyzes Profit & Loss (P&L) CSV files using an AI-powered financial agent.
 
-🚀 Overview
-FinnAI is a finance-focused chatbot that lets you upload a CSV file containing Profit & Loss (P&L) data and ask questions about financial metrics, trends, and calculations.
+FinnAI is an AI-powered chatbot that allows users to analyze Profit & Loss (P&L) statements directly from CSV files.
+It utilizes LangChain, OpenAI's GPT-4, and Streamlit to provide financial insights and data visualizations.
 
-It uses:
+🚀 Features
 
-Mistral-7B (Local LLM) for offline AI responses
-LangChain CSV Agents to interact with financial data
-Matplotlib & Seaborn for data visualization
-🛠️ Setup & Installation
+📁 Upload CSV files and extract key financial insights.
+
+🔍 Ask questions about revenue, profits, expenses, EBITDA, and more.
+
+📊 Generate graphs dynamically when asked to visualize financial trends.
+
+🤖 Uses LangChain Agents for enhanced understanding of financial data.
+
+🔧 Setup & Installation
+
 1️⃣ Clone the Repository
-sh
-Copy
-Edit
+
+# Using SSH
 git clone git@github.com:Galo25/FinnAI.git
-cd FinnAI
+cd FinnAI/vdragent
+
 2️⃣ Create a Virtual Environment
-sh
-Copy
-Edit
+
+# Windows
 python -m venv venv
-source venv/bin/activate  # macOS/Linux
-venv\Scripts\activate     # Windows
+venv\Scripts\activate
+
+# Mac/Linux
+python3 -m venv venv
+source venv/bin/activate
+
 3️⃣ Install Dependencies
-sh
-Copy
-Edit
+
 pip install -r requirements.txt
-4️⃣ Set Up Your Model
-Since Mistral-7B is too large for Git, download it manually and place it inside the models/ folder.
 
-sh
-Copy
-Edit
-mkdir -p models && cd models
-wget https://huggingface.co/bartowski/Mistral-7B-Instruct-v0.3-GGUF/resolve/main/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf
-📂 File Structure
-graphql
-Copy
-Edit
-📁 FinnAI/
-│── 📂 models/               # Stores the LLM (ignored in .gitignore)
-│── 📂 venv/                 # Virtual environment (ignored in .gitignore)
-│── 📂 data/                 # Sample CSV files
-│── 📄 main.py               # Streamlit app entry point
-│── 📄 requirements.txt       # Python dependencies
-│── 📄 .gitignore             # Excludes unnecessary files
-│── 📄 README.md              # Project documentation
-▶️ How to Run
-Once everything is set up, launch the Streamlit app:
+4️⃣ Set Up Environment Variables
 
-sh
-Copy
-Edit
+Create a .env file in the project root and add your OpenAI API key:
+
+OPENAI_API_KEY=your_openai_api_key_here
+
+▶️ Run the Application
+
+Start the chatbot using Streamlit:
+
 streamlit run main.py
-This will start a local server. Open http://localhost:8501 in your browser to interact with the chatbot.
 
-📊 Features
-✅ Upload CSV files for P&L analysis
-✅ Ask financial questions like revenue trends, EBITDA, etc.
-✅ Detect number formats (millions/thousands)
-✅ Understand negative values in ( ) brackets
-✅ Generate financial plots & charts dynamically
+The app will run on http://localhost:8501
 
-🔍 Example Questions
-"What was the total net revenue for 2019?"
-"Plot the year-over-year (YOY) growth of total revenue."
-"Calculate EBITDA for 2020."
-"What were the biggest expenses in 2021?"
+📌 How to Use FinnAI
+
+1️⃣ Upload a CSV file containing financial data (Profit & Loss statement).
+2️⃣ Ask questions like:
+
+"What is the total revenue for 2021?"
+
+"Plot the EBITDA trends over the last 3 years."
+
+"What are the total expenses for Q3 2020?"
+3️⃣ FinnAI analyzes the data and provides accurate financial insights.
+4️⃣ If a graph is requested, it will be generated and displayed inside Streamlit.
+
+🛠 Technologies Used
+
+Python 🐍
+
+LangChain (Agent-based AI execution)
+
+OpenAI GPT-4 (LLM for financial analysis)
+
+Streamlit (User Interface)
+
+Matplotlib (Graphing)
+
 🤝 Contributing
-Want to improve FinnAI? Fork & contribute!
 
-Create a new branch
-sh
-Copy
-Edit
-git checkout -b feature-new-improvement
-Commit your changes
-sh
-Copy
-Edit
-git add .
+Pull requests are welcome! If you'd like to improve the project, follow these steps:
+
+git checkout -b feature-branch
 git commit -m "Added a new feature"
-Push & create a PR
-sh
-Copy
-Edit
-git push origin feature-new-improvement
-🛑 .gitignore
-We've added the following to .gitignore:
+git push origin feature-branch
 
-markdown
-Copy
-Edit
-models/
-*.gguf
-venv/
-__pycache__/
-This prevents tracking large models and temporary files.
+Then, create a Pull Request on GitHub.
 
-⚡ Troubleshooting
-Q: Model path error?
-➡ Ensure the model is inside models/ and referenced correctly in main.py.
+📝 License
 
-Q: Slow performance?
-➡ Try lowering the context window (n_ctx=1024) in main.py:
+This project is licensed under the MIT License.
 
-python
-Copy
-Edit
-llm = LlamaCpp(
-    model_path="./models/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf",
-    n_ctx=1024,
-    temperature=0.2
-)
-Q: Can I use OpenAI instead?
-➡ Yes! Replace LlamaCpp with:
+⭐ Support the Project
 
-python
-Copy
-Edit
-llm = ChatOpenAI(model_name="gpt-4-turbo", temperature=0)
-🌍 License
-This project is open-source under the MIT License. Feel free to use & modify!
+If you find FinnAI useful, consider giving this repo a ⭐ on GitHub!
 
-📬 Contact
-For any issues or questions, open a GitHub Issue or reach out to Galo25. 🚀
+🔗 GitHub Repository: https://github.com/Galo25/FinnAI
 
-✅ Now, you're ready to run FinnAI! 🎯
