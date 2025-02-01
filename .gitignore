@@ -128,6 +128,8 @@ ENV/
 env.bak/
 venv.bak/
 askcsv_39
+models/
+*.gguf
 
 # Spyder project settings
 .spyderproject
