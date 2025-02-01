@@ -1,5 +1,4 @@
 📊 FinnAI - P&L Analysis Chatbot
-
 FinnAI is an AI-powered chatbot that allows users to analyze Profit & Loss (P&L) statements directly from CSV files.
 It utilizes LangChain, OpenAI's GPT-4, and Streamlit to provide financial insights and data visualizations.
 
